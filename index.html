@@ -21,6 +21,9 @@
     <li><code>map.delete(key)</code>– removes the value by the key.</li>
     <li><code>map.clear()</code>– removes everything from the map.</li>
     <li><code>map.size</code> – returns the current element count.</li>
+  </ul>
+  <h3>Some facts of Map</h3>
+  <ul>
     <li>
       As we can see, unlike objects, keys are not converted to strings. Any type
       of key is possible.
@@ -30,6 +33,25 @@
     <li>
       <strong>Chaining</strong> Every map.set call returns the map itself, so we
       can “chain” the calls:
+    </li>
+  </ul>
+  <h3>Iteration over Map</h3>
+  <p>For looping over a map, there are 3 methods:</p>
+  <ul>
+    <li><code>map.keys()</code>– returns an iterable for keys,</li>
+    <li><code>map.values()</code>– returns an iterable for values,</li>
+    <li>
+      <code>map.entries()</code>– returns an iterable for entries [key, value],
+      it’s used by default in for..of.
+    </li>
+    <li>
+      <strong>The insertion order is used:</strong> The iteration goes in the
+      same order as the values were inserted. <code>Map</code> preserves this
+      order, unlike a regular Object.
+    </li>
+    <li>
+      Besides that, Map has a built-in <code>forEach</code> method, similar to
+      Array:
     </li>
   </ul>
 </div>
