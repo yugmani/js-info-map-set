@@ -134,3 +134,41 @@ let tap = new Map(Object.entries(obj));
 console.log(tap.get('name'));   //John
 console.log(tap.get('age')); //30
 
+//Here, Object.entries returns the array of key/value pairs: [ ["name","John"], ["age", 30] ]. That’s what Map needs.
+
+//Object.fromEntries: Object from Map
+// *******************************************
+
+//There’s Object.fromEntries method that does the reverse: given an array of [key, value] pairs, it creates an object from them:
+let prices = Object.fromEntries([
+  ['banana', 1],
+  ['orange', 2],
+  ['meat', 4]
+]);
+
+console.log(prices.banana); //1
+console.log(prices.orange); //2
+console.log(prices.meat)  //4
+
+//We can use Object.fromEntries to get a plain object from Map.
+
+//E.g. we store the data in a Map, but we need to pass it to a 3rd-party code that expects a plain object.
+let kat = new Map();
+kat.set('banana', 1);
+kat.set('orange', 2);
+kat.set('meat', 4);
+
+let myObj = Object.fromEntries(kat.entries());  //make a plain object (*)
+console.log(myObj); //{banana: 1, orange: 2, meat: 4}
+
+console.log(myObj.banana);  //1
+console.log(myObj.orange);  //2
+console.log(myObj.meat);  //4
+
+//A call to map.entries() returns an iterable of key/value pairs, exactly in the right format for Object.fromEntries.
+
+//We could also make line (*) shorter:
+let newObj = Object.fromEntries(kat);
+console.log(newObj);  //{banana: 1, orange: 2, meat: 4}
+
+//That’s the same, because Object.fromEntries expects an iterable object as the argument. Not necessarily an array. And the standard iteration for map returns same key/value pairs as map.entries(). So we get a plain object with same key/values as the map.
